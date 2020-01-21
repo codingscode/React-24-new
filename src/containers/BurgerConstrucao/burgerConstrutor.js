@@ -15,10 +15,10 @@ class burgerConstrutor extends Component {
 
     state = {
       ingredientes: {
-        salada: 1,
-        bacon: 1,
-        queijo: 2,
-        carne: 2
+        salada: 1,  //0
+        bacon: 1,   //0
+        queijo: 2,  //0
+        carne: 2    //0
       }
     }
 
