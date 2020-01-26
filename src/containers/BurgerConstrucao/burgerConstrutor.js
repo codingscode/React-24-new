@@ -73,7 +73,8 @@ class burgerConstrutor extends Component {
              <Burger ingredientes={this.state.ingredientes}/>
              <ControlesConstrucao ingredienteAdicionado={this.adicionadorIngrediente}
                   ingredienteRemovido={this.removedorIngrediente}
-                  desabilitado={infoDesabilitada}/>
+                  desabilitado={infoDesabilitada}
+                  preco={this.state.precoTotal}/>
           </Auxiliar>
         )
     }
