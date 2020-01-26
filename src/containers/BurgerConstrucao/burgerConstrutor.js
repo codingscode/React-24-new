@@ -28,7 +28,19 @@ class burgerConstrutor extends Component {
         queijo: 0,  
         carne: 0    
       },
-      precoTotal: 4
+      precoTotal: 4,
+      adquirivel: false
+    }
+
+    atualizarEstadoAdquirir (ingredientes) {
+        const soma = Object.keys(ingredientes)
+          .map(igKey => {
+              return ingredientes[igKey]
+          })
+          .reduce((soma, el) => {
+              return soma + el;
+          }, 0);
+        this.setState({adquirivel: soma > 0})
     }
 
     adicionadorIngrediente = (type) => {
@@ -42,6 +54,7 @@ class burgerConstrutor extends Component {
       const previoPreco = this.state.precoTotal;
       const novoPreco = previoPreco + adicaoPreco;
       this.setState({precoTotal: novoPreco, ingredientes: ingredientesAtualizados});
+      this.atualizarEstadoAdquirir(ingredientesAtualizados)
    }
    
    removedorIngrediente = (type) => {
@@ -58,6 +71,7 @@ class burgerConstrutor extends Component {
       const previoPreco = this.state.precoTotal;
       const novoPreco = previoPreco - deducaoPreco;
       this.setState({precoTotal: novoPreco, ingredientes: ingredientesAtualizados});
+      this.atualizarEstadoAdquirir(ingredientesAtualizados)
    }
 
     render() {
@@ -74,6 +88,7 @@ class burgerConstrutor extends Component {
              <ControlesConstrucao ingredienteAdicionado={this.adicionadorIngrediente}
                   ingredienteRemovido={this.removedorIngrediente}
                   desabilitado={infoDesabilitada}
+                  adquirivel={this.state.adquirivel}
                   preco={this.state.precoTotal}/>
           </Auxiliar>
         )
