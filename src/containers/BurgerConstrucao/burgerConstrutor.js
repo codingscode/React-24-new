@@ -44,15 +44,36 @@ class burgerConstrutor extends Component {
       this.setState({precoTotal: novoPreco, ingredientes: ingredientesAtualizados});
    }
    
-   removedorIngrediente = () => {
-   
+   removedorIngrediente = (type) => {
+      const previoContad = this.state.ingredientes[type];
+      if (previoContad <= 0) {
+        return;
+      }
+      const atualizadoContad = previoContad - 1;
+      const ingredientesAtualizados = {
+        ...this.state.ingredientes
+      };
+      ingredientesAtualizados[type] = atualizadoContad
+      const deducaoPreco = PRECOS_INGREDIENTE[type]
+      const previoPreco = this.state.precoTotal;
+      const novoPreco = previoPreco - deducaoPreco;
+      this.setState({precoTotal: novoPreco, ingredientes: ingredientesAtualizados});
    }
 
     render() {
+        const infoDesabilitada = {
+           ...this.state.ingredientes
+        };
+        for (let key in infoDesabilitada) {
+            infoDesabilitada[key] = infoDesabilitada[key] <= 0
+        }
+
         return (
           <Auxiliar>
              <Burger ingredientes={this.state.ingredientes}/>
-             <ControlesConstrucao ingredienteAdicionado={this.adicionadorIngrediente}/>
+             <ControlesConstrucao ingredienteAdicionado={this.adicionadorIngrediente}
+                  ingredienteRemovido={this.removedorIngrediente}
+                  desabilitado={infoDesabilitada}/>
           </Auxiliar>
         )
     }

@@ -14,7 +14,9 @@ const controlesConstrucao = (props) => (
     <div className={classes.controlesConstrucao}>
          {controles.map(controle => (
             <ControleConstrucao key={controle.label} label={controle.label} 
-            adicionado={() => props.ingredienteAdicionado(controle.type)} />
+            adicionado={() => props.ingredienteAdicionado(controle.type)} 
+            removido={() => props.ingredienteRemovido(controle.type)} 
+            desabilitado={props.desabilitado[controle.type]}/>
          ))}
     </div>
 );
