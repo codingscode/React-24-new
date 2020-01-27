@@ -3,6 +3,8 @@ import React, {Component} from 'react'
 import Auxiliar from '../../hoc/Auxiliar'
 import Burger from '../../componentes/Burger/Burger'
 import ControlesConstrucao from '../../componentes/Burger/controlesConstrucao/controlesConstrucao'
+import Modal from '../../componentes/UI/Modal/Modal'
+import SumarioPedido from '../../componentes/Burger/SumarioPedido/SumarioPedido'
 
 
 const PRECOS_INGREDIENTE = {
@@ -84,6 +86,9 @@ class burgerConstrutor extends Component {
 
         return (
           <Auxiliar>
+             <Modal>
+                 <SumarioPedido ingredientes={this.state.ingredientes}/>
+             </Modal>
              <Burger ingredientes={this.state.ingredientes}/>
              <ControlesConstrucao ingredienteAdicionado={this.adicionadorIngrediente}
                   ingredienteRemovido={this.removedorIngrediente}
