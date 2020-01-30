@@ -81,6 +81,10 @@ class burgerConstrutor extends Component {
         this.setState({adquirindo: true});
     }
 
+    gerencancelarAdquirir = () => {
+        this.setState({adquirindo: false});
+    }
+
     render() {
         const infoDesabilitada = {
            ...this.state.ingredientes
@@ -91,7 +95,7 @@ class burgerConstrutor extends Component {
 
         return (
           <Auxiliar>
-             <Modal show={this.state.adquirindo}>
+             <Modal show={this.state.adquirindo} modalFechado={this.gerencancelarAdquirir}>
                  <SumarioPedido ingredientes={this.state.ingredientes}/>
              </Modal>
              <Burger ingredientes={this.state.ingredientes}/>
