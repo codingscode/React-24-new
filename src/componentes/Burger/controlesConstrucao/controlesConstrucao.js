@@ -19,7 +19,7 @@ const controlesConstrucao = (props) => (
             removido={() => props.ingredienteRemovido(controle.type)} 
             desabilitado={props.desabilitado[controle.type]}/>
          ))}
-         <button className={classes.botaoPedido} desabilitado={!props.adquirivel}>Solicite agora</button>
+         <button className={classes.botaoPedido} desabilitado={!props.adquirivel} onClick={props.ordenado}>Solicite agora</button>
     </div>
 );
 

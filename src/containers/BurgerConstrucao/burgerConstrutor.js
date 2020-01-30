@@ -31,7 +31,8 @@ class burgerConstrutor extends Component {
         carne: 0    
       },
       precoTotal: 4,
-      adquirivel: false
+      adquirivel: false,
+      adquirindo: false
     }
 
     atualizarEstadoAdquirir (ingredientes) {
@@ -76,6 +77,10 @@ class burgerConstrutor extends Component {
       this.atualizarEstadoAdquirir(ingredientesAtualizados)
    }
 
+    gerenAdquirir = () => {
+        this.setState({adquirindo: true});
+    }
+
     render() {
         const infoDesabilitada = {
            ...this.state.ingredientes
@@ -86,7 +91,7 @@ class burgerConstrutor extends Component {
 
         return (
           <Auxiliar>
-             <Modal>
+             <Modal show={this.state.adquirindo}>
                  <SumarioPedido ingredientes={this.state.ingredientes}/>
              </Modal>
              <Burger ingredientes={this.state.ingredientes}/>
@@ -94,7 +99,8 @@ class burgerConstrutor extends Component {
                   ingredienteRemovido={this.removedorIngrediente}
                   desabilitado={infoDesabilitada}
                   adquirivel={this.state.adquirivel}
-                  preco={this.state.precoTotal}/>
+                  preco={this.state.precoTotal}
+                  ordenado={this.gerenAdquirir}/>
           </Auxiliar>
         )
     }
