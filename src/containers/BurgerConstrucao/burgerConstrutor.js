@@ -102,7 +102,8 @@ class burgerConstrutor extends Component {
              <Modal show={this.state.adquirindo} modalFechado={this.gerencancelarAdquirir}>
                  <SumarioPedido ingredientes={this.state.ingredientes} 
                  compraCancelada={this.gerencancelarAdquirir}
-                 compraContinuada={this.gerencontinuarAdquirir}/>
+                 compraContinuada={this.gerencontinuarAdquirir}
+                 preco={this.state.precoTotal}/>
              </Modal>
              <Burger ingredientes={this.state.ingredientes}/>
              <ControlesConstrucao ingredienteAdicionado={this.adicionadorIngrediente}
