@@ -1,6 +1,8 @@
 import React from 'react'
 
 import Auxiliar from '../../../hoc/Auxiliar'
+import Botao from '../../UI/Botao/Botao'
+
 
 const pedidoSumario = (props) => {
     const sumarioIngredientes = Object.keys(props.ingredientes)
@@ -16,8 +18,8 @@ const pedidoSumario = (props) => {
                 {sumarioIngredientes}
             </ul>
             <p>Continuar finalização da compra ?</p>
-            <button>Cancelar</button>
-            <button>Continuar</button>
+            <Botao btnType="Perigo" clicado={props.compraCancelada}>Cancelar</Botao>
+            <Botao btnType="Sucedido" clicado={props.compraContinuada}>Continuar</Botao>
         </Auxiliar>
     )
 }
