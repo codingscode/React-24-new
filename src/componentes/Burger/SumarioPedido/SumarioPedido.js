@@ -5,7 +5,7 @@ import Auxiliar from '../../../hoc/Auxiliar'
 const pedidoSumario = (props) => {
     const sumarioIngredientes = Object.keys(props.ingredientes)
         .map(igKey => {
-            return (<li key={igKey}><span style={{textoTransform: 'capitalize'}}>{igKey}</span> : {props.ingredientes[igKey]}</li>)
+            return (<li key={igKey}><span style={{textTransform: 'capitalize'}}>{igKey}</span> : {props.ingredientes[igKey]}</li>)
         })
 
     return (
@@ -16,6 +16,8 @@ const pedidoSumario = (props) => {
                 {sumarioIngredientes}
             </ul>
             <p>Continuar finalização da compra ?</p>
+            <button>Cancelar</button>
+            <button>Continuar</button>
         </Auxiliar>
     )
 }
