@@ -17,7 +17,7 @@ const pedidoSumario = (props) => {
             <ul>
                 {sumarioIngredientes}
             </ul>
-    <p><strong>Preço Total : {props.preco.toFixed(2)}</strong></p>
+            <p><strong>Preço Total : {props.preco.toFixed(2)}</strong></p>
             <p>Continuar finalização da compra ?</p>
             <Botao btnType="Perigo" clicado={props.compraCancelada}>Cancelar</Botao>
             <Botao btnType="Sucedido" clicado={props.compraContinuada}>Continuar</Botao>
