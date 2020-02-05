@@ -5,10 +5,10 @@ import BarFerr from '../Navegacao/BarrFerr/BarFerr'
 
 const layout = (props) => (
   <Auxiliar>
-  <BarFerr/>
-  <main className={classes.Conteudo}>
-      {props.children}
-  </main>
+    <BarFerr/>
+    <main className={classes.Conteudo}>
+        {props.children}
+    </main>
   </Auxiliar>  
 );
 
