@@ -7,7 +7,9 @@ import ItensNavegacao from '../itensNavegacao/itensNavegacao'
 const barferr = (props) => (
     <header className={classes.BarFerr}>
         <div>MENU</div>
-        <Logo />
+        <div className={classes.Logo}>
+           <Logo />
+        </div>
         <nav>
             <ItensNavegacao />
         </nav>

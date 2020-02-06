@@ -7,7 +7,9 @@ import classes from './GavetaLateral.css'
 const gavetaLateral = (props) => {
    return (
        <div className={classes.GavetaLateral}>
-           <Logo />
+           <div className={classes.Logo}>
+             <Logo />
+           </div>
            <nav>
                <ItensNavegacao />
            </nav>
