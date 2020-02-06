@@ -10,7 +10,7 @@ const barferr = (props) => (
         <div className={classes.Logo}>
            <Logo />
         </div>
-        <nav>
+        <nav className={classes.desktopSomente}>
             <ItensNavegacao />
         </nav>
     </header>

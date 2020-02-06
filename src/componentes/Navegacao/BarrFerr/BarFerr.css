@@ -20,3 +20,9 @@
 .Logo {
    height: 80%;
 }
+
+@media (min-width: 499px) {
+   .desktopSomente {
+      display: none;
+   }
+}
