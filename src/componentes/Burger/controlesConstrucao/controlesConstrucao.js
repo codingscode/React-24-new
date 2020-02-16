@@ -17,9 +17,9 @@ const controlesConstrucao = (props) => (
             <ControleConstrucao key={controle.label} label={controle.label} 
             adicionado={() => props.ingredienteAdicionado(controle.type)} 
             removido={() => props.ingredienteRemovido(controle.type)} 
-            desabilitado={props.desabilitado[controle.type]}/>
+            disabled={props.desabilitado[controle.type]}/>
          ))}
-         <button className={classes.botaoPedido} desabilitado={!props.adquirivel} onClick={props.ordenado}>Solicite agora</button>
+         <button className={classes.botaoPedido} disabled={!props.adquirivel} onClick={props.ordenado}>Solicite agora</button>
     </div>
 );
 
