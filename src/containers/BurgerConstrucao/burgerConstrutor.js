@@ -5,6 +5,7 @@ import Burger from '../../componentes/Burger/Burger'
 import ControlesConstrucao from '../../componentes/Burger/controlesConstrucao/controlesConstrucao'
 import Modal from '../../componentes/UI/Modal/Modal'
 import SumarioPedido from '../../componentes/Burger/SumarioPedido/SumarioPedido'
+import Rodador from '../../componentes/UI/Rodador/Rodador'
 import axios from '../../axios-pedidos'
 
 
@@ -33,7 +34,8 @@ class burgerConstrutor extends Component {
       },
       precoTotal: 4,
       adquirivel: false,
-      adquirindo: false
+      adquirindo: false,
+      carregando: false
     }
 
     atualizarEstadoAdquirir (ingredientes) {
@@ -88,6 +90,7 @@ class burgerConstrutor extends Component {
 
     gerencontinuarAdquirir = () => {
         //alert('Continue');
+        this.setState({carregando: true})
         const pedido = {
             ingredientes: this.state.ingredientes,
             preco: this.state.precoTotal,
@@ -103,8 +106,12 @@ class burgerConstrutor extends Component {
             metodoEntrega: 'o mais rápido'
         }
         axios.post('/pedidos.json', pedido)
-            .then(resposta => console.log(resposta))
-            .catch(erro => console.log(erro))
+            .then(resposta => {
+                this.setState({carregando: false, adquirindo: false})
+            })
+            .catch(erro => {
+                this.setState({carregando: false, adquirindo: false})
+            })
     }
 
     render() {
@@ -115,13 +122,19 @@ class burgerConstrutor extends Component {
             infoDesabilitada[key] = infoDesabilitada[key] <= 0
         }
 
+        let sumarioPedido = <SumarioPedido ingredientes={this.state.ingredientes} 
+                                compraCancelada={this.gerencancelarAdquirir}
+                                compraContinuada={this.gerencontinuarAdquirir}
+                                preco={this.state.precoTotal}/>
+
+        if(this.state.carregando) {
+            sumarioPedido = <Rodador />
+        }
+
         return (
           <Auxiliar>
              <Modal show={this.state.adquirindo} modalFechado={this.gerencancelarAdquirir}>
-                 <SumarioPedido ingredientes={this.state.ingredientes} 
-                 compraCancelada={this.gerencancelarAdquirir}
-                 compraContinuada={this.gerencontinuarAdquirir}
-                 preco={this.state.precoTotal}/>
+                 {sumarioPedido}
              </Modal>
              <Burger ingredientes={this.state.ingredientes}/>
              <ControlesConstrucao ingredienteAdicionado={this.adicionadorIngrediente}
