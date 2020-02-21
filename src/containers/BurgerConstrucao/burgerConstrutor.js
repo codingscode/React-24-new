@@ -5,6 +5,7 @@ import Burger from '../../componentes/Burger/Burger'
 import ControlesConstrucao from '../../componentes/Burger/controlesConstrucao/controlesConstrucao'
 import Modal from '../../componentes/UI/Modal/Modal'
 import SumarioPedido from '../../componentes/Burger/SumarioPedido/SumarioPedido'
+import axios from '../../axios-pedidos'
 
 
 const PRECOS_INGREDIENTE = {
@@ -86,7 +87,24 @@ class burgerConstrutor extends Component {
     }
 
     gerencontinuarAdquirir = () => {
-      alert('Continue');
+        //alert('Continue');
+        const pedido = {
+            ingredientes: this.state.ingredientes,
+            preco: this.state.precoTotal,
+            cliente: {
+                nome: 'Mario Rossi',
+                endereco: {
+                      rua: 'Testrua 1',
+                      zipCode: '41351',
+                      pais: 'Itália'
+                },
+                email: 'test@test.com'
+            },
+            metodoEntrega: 'o mais rápido'
+        }
+        axios.post('/pedidos.json', pedido)
+            .then(resposta => console.log(resposta))
+            .catch(erro => console.log(erro))
     }
 
     render() {
