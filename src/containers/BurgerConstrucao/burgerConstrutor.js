@@ -6,6 +6,7 @@ import ControlesConstrucao from '../../componentes/Burger/controlesConstrucao/co
 import Modal from '../../componentes/UI/Modal/Modal'
 import SumarioPedido from '../../componentes/Burger/SumarioPedido/SumarioPedido'
 import Rodador from '../../componentes/UI/Rodador/Rodador'
+import GerenComErro from '../../hoc/GerenComErro/GerenComErro'
 import axios from '../../axios-pedidos'
 
 
@@ -148,4 +149,4 @@ class burgerConstrutor extends Component {
     }
 }
 
-export default burgerConstrutor;
+export default GerenComErro(burgerConstrutor, axios);
