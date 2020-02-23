@@ -18,25 +18,29 @@ const PRECOS_INGREDIENTE = {
 }
 
 class burgerConstrutor extends Component {
-
     /*
     constructor(props) {
       super(props);
       this.state = {...}
     }
     */
-
     state = {
-      ingredientes: {
-        salada: 0,  
-        bacon: 0,   
-        queijo: 0,  
-        carne: 0    
-      },
+      ingredientes: null,
       precoTotal: 4,
       adquirivel: false,
       adquirindo: false,
-      carregando: false
+      carregando: false,
+      erro: false
+    }
+
+    componentDidMount () {
+      axios.get('https://react-meu-burger.firebaseio.com/ingredientes.json')
+         .then(resposta => {
+            this.setState({ingredientes: resposta.data})
+         })
+         .catch(erro => {
+             this.setState({erro: true})
+         })
     }
 
     atualizarEstadoAdquirir (ingredientes) {
@@ -123,11 +127,27 @@ class burgerConstrutor extends Component {
             infoDesabilitada[key] = infoDesabilitada[key] <= 0
         }
 
-        let sumarioPedido = <SumarioPedido ingredientes={this.state.ingredientes} 
+        let sumarioPedido = null
+        
+        let burger = this.state.erro ? <p>Ingredientes não podem ser carregados</p> : <Rodador />
+
+        if (this.state.ingredientes) {
+            burger = (
+              <Auxiliar>
+                  <Burger ingredientes={this.state.ingredientes}/>
+                  <ControlesConstrucao ingredienteAdicionado={this.adicionadorIngrediente}
+                      ingredienteRemovido={this.removedorIngrediente}
+                      desabilitado={infoDesabilitada}
+                      adquirivel={this.state.adquirivel}
+                      preco={this.state.precoTotal}
+                      ordenado={this.gerenAdquirir}/>
+              </Auxiliar>
+           );
+           sumarioPedido = <SumarioPedido ingredientes={this.state.ingredientes} 
                                 compraCancelada={this.gerencancelarAdquirir}
                                 compraContinuada={this.gerencontinuarAdquirir}
                                 preco={this.state.precoTotal}/>
-
+        }
         if(this.state.carregando) {
             sumarioPedido = <Rodador />
         }
@@ -137,13 +157,7 @@ class burgerConstrutor extends Component {
              <Modal show={this.state.adquirindo} modalFechado={this.gerencancelarAdquirir}>
                  {sumarioPedido}
              </Modal>
-             <Burger ingredientes={this.state.ingredientes}/>
-             <ControlesConstrucao ingredienteAdicionado={this.adicionadorIngrediente}
-                  ingredienteRemovido={this.removedorIngrediente}
-                  desabilitado={infoDesabilitada}
-                  adquirivel={this.state.adquirivel}
-                  preco={this.state.precoTotal}
-                  ordenado={this.gerenAdquirir}/>
+             {burger}
           </Auxiliar>
         )
     }

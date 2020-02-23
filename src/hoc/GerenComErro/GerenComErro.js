@@ -9,7 +9,7 @@ const gerenComErro = (ComponenteEnvolvido, axios) => {
             erro: null
         }
          
-        componentDidMount() {
+        componentWillMount() {
             axios.interceptors.request.use(req => {
                this.setState({erro: null})
                return req
