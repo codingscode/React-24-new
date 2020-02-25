@@ -10,21 +10,15 @@ const gerenComErro = (ComponenteEnvolvido, axios) => {
         }
          
         componentWillMount() {
-            this.reqInterceptor = axios.interceptors.request.use(req => {
+            axios.interceptors.request.use(req => {
                this.setState({erro: null})
                return req
             })
-            this.resInterceptor = axios.interceptors.response.use(res => res, erro => {
+            axios.interceptors.response.use(res => res, erro => {
                this.setState({erro: erro})
             })
         }
-
-        componentWillUnmount() {
-            console.log('Will Unmount', this.reqInterceptor, this.resInterceptor)
-            axios.interceptors.request.eject(this.reqInterceptor)
-            axios.interceptors.response.eject(this.resInterceptor)
-        }
-        
+              
         gerenErroConfirmado = () => {
             this.setState({erro: null})
         }
