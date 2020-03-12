@@ -18,12 +18,7 @@ const PRECOS_INGREDIENTE = {
 }
 
 class burgerConstrutor extends Component {
-    /*
-    constructor(props) {
-      super(props);
-      this.state = {...}
-    }
-    */
+    
     state = {
       ingredientes: null,
       precoTotal: 4,
@@ -34,6 +29,7 @@ class burgerConstrutor extends Component {
     }
 
     componentDidMount () {
+      console.log(this.props)
       axios.get('https://react-meu-burger.firebaseio.com/ingredientes.json')
          .then(resposta => {
             this.setState({ingredientes: resposta.data})
@@ -94,7 +90,7 @@ class burgerConstrutor extends Component {
     }
 
     gerencontinuarAdquirir = () => {
-        //alert('Continue');
+        /*
         this.setState({carregando: true})
         const pedido = {
             ingredientes: this.state.ingredientes,
@@ -116,7 +112,7 @@ class burgerConstrutor extends Component {
             })
             .catch(erro => {
                 this.setState({carregando: false, adquirindo: false})
-            })
+            })*/
     }
 
     render() {
