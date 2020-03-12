@@ -113,6 +113,7 @@ class burgerConstrutor extends Component {
             .catch(erro => {
                 this.setState({carregando: false, adquirindo: false})
             })*/
+        this.props.history.push('/verificacao')
     }
 
     render() {
