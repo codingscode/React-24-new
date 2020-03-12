@@ -11,8 +11,8 @@ const verifiSumario = (props) => {
             <div style={{width: '100%', margin: 'auto'}}>
                 <Burger ingredientes={props.ingredientes} />
             </div>
-            <Botao btnType="Perigo" clicked >Cancelar</Botao>
-            <Botao btnType="Sucedido" clicked >Continuar</Botao>
+            <Botao btnType="Perigo" clicado={props.verifiCancelado}  >Cancelar</Botao>
+            <Botao btnType="Sucedido" clicado={props.verifiContinuado} >Continuar</Botao>
         </div>
     )
 }

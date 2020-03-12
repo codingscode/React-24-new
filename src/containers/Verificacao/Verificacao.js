@@ -12,10 +12,19 @@ class Checkout extends Component {
         }
      }
      
+     gerenVerifiCancelado = () => {
+        this.props.history.goBack()
+     }
+     
+     gerenVerifiContinuado = () => {
+        this.props.history.replace('/verificacao/info-contato')
+     }
+
      render() {
          return (
               <div>
-                  <VerifiSumario ingredientes={this.state.ingredientes}/>
+                  <VerifiSumario ingredientes={this.state.ingredientes}
+                      verifiCancelado={this.gerenVerifiCancelado} verifiContinuado={this.gerenVerifiContinuado}/>
               </div>
          )
      }
