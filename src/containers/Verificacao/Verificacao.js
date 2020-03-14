@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
+import {Route} from 'react-router-dom'
 
 import VerifiSumario from '../../componentes/Pedido/VerifiSumario/VerifiSumario'
+import InfoContato from './InfoContato/InfoContato'
 
 class Checkout extends Component {
      state = {
@@ -35,6 +37,7 @@ class Checkout extends Component {
               <div>
                   <VerifiSumario ingredientes={this.state.ingredientes}
                       verifiCancelado={this.gerenVerifiCancelado} verifiContinuado={this.gerenVerifiContinuado}/>
+                  <Route path={this.props.match.path + '/info-contato'} component={InfoContato} />   
               </div>
          )
      }
