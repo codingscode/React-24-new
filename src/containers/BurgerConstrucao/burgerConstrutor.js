@@ -27,7 +27,7 @@ class burgerConstrutor extends Component {
       carregando: false,
       erro: false
     }
-
+    
     componentDidMount () {
       console.log(this.props)
       axios.get('https://react-meu-burger.firebaseio.com/ingredientes.json')
@@ -113,7 +113,16 @@ class burgerConstrutor extends Component {
             .catch(erro => {
                 this.setState({carregando: false, adquirindo: false})
             })*/
-        this.props.history.push('/verificacao')
+        const parametrosConsulta = []
+        for (let i in this.state.ingredientes) {
+             parametrosConsulta.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredientes[i]))
+        }
+        const stringConsulta = parametrosConsulta.join('&')
+ 
+        this.props.history.push({
+            pathname: '/verificacao',
+            search: '?' + stringConsulta
+        })
     }
 
     render() {
