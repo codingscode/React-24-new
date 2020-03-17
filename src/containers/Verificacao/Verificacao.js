@@ -6,22 +6,24 @@ import InfoContato from './InfoContato/InfoContato'
 
 class Checkout extends Component {
      state = {
-        ingredientes: {
-           salada: 1,
-           carne: 1,
-           queijo: 1,
-           bacon: 1
-        }
+        ingredientes: null,
+        preco: 0
      }
      
-     componentDidMount() {
+     componentWillMount() {
          const consulta = new URLSearchParams(this.props.location.search)
          const ingredientes = {}
+         let preco = 0
          for (let param of consulta.entries()) {
             // ['salada', '1']
-            ingredientes[param[0]] = +param[1]
+            if (param[0] === 'preco') {
+               preco = param[1]
+            }
+            else {
+               ingredientes[param[0]] = +param[1]
+            }
          }
-         this.setState({ingredientes: ingredientes})
+         this.setState({ingredientes: ingredientes, precoTotal: preco})
      }
 
      gerenVerifiCancelado = () => {
@@ -37,7 +39,9 @@ class Checkout extends Component {
               <div>
                   <VerifiSumario ingredientes={this.state.ingredientes}
                       verifiCancelado={this.gerenVerifiCancelado} verifiContinuado={this.gerenVerifiContinuado}/>
-                  <Route path={this.props.match.path + '/info-contato'} component={InfoContato} />   
+                  <Route path={this.props.match.path + '/info-contato'} 
+                      render={(props) => (<InfoContato ingredientes={this.state.ingredientes} 
+                        preco={this.state.precoTotal} {...props}/>)} />   
               </div>
          )
      }

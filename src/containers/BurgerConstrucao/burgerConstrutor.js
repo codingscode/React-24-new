@@ -90,33 +90,12 @@ class burgerConstrutor extends Component {
     }
 
     gerencontinuarAdquirir = () => {
-        /*
-        this.setState({carregando: true})
-        const pedido = {
-            ingredientes: this.state.ingredientes,
-            preco: this.state.precoTotal,
-            cliente: {
-                nome: 'Mario Rossi',
-                endereco: {
-                      rua: 'Testrua 1',
-                      zipCode: '41351',
-                      pais: 'Itália'
-                },
-                email: 'test@test.com'
-            },
-            metodoEntrega: 'o mais rápido'
-        }
-        axios.post('/pedidos.json', pedido)
-            .then(resposta => {
-                this.setState({carregando: false, adquirindo: false})
-            })
-            .catch(erro => {
-                this.setState({carregando: false, adquirindo: false})
-            })*/
+        
         const parametrosConsulta = []
         for (let i in this.state.ingredientes) {
              parametrosConsulta.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredientes[i]))
         }
+        parametrosConsulta.push('preco=' + this.state.precoTotal)
         const stringConsulta = parametrosConsulta.join('&')
  
         this.props.history.push({
