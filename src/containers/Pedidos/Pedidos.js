@@ -30,8 +30,9 @@ class Pedidos extends Component {
     render() {
         return (
             <div>
-                <Pedido />
-                <Pedido />
+                {this.state.pedidos.map(pedido => (
+                     <Pedido key={pedido.id} ingredientes={pedido.ingredientes} preco={pedido.preco} />
+                ))}
             </div>
         )
     }
