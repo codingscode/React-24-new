@@ -5,7 +5,7 @@ import axios from '../../axios-pedidos'
 import GerenComErro from '../../hoc/GerenComErro/GerenComErro'
 
 class Pedidos extends Component {
-    state = {
+     state = {
         pedidos: [],
         carregando: true
      }

@@ -4,6 +4,7 @@ import Botao from '../../../componentes/UI/Botao/Botao'
 import Rodador from '../../../componentes/UI/Rodador/Rodador'
 import classes from './InfoContato.css'
 import axios from '../../../axios-pedidos'
+import Entrada from '../../../componentes/UI/Entrada/Entrada'
 
 
 class InfoContato extends Component {
@@ -49,10 +50,10 @@ class InfoContato extends Component {
     render() {
         let form = (
             <form>
-                <input className={classes.Input} type="text" name="nome" placeholder="Seu Nome" />
-                <input className={classes.Input} type="email" name="email" placeholder="Seu Email" />
-                <input className={classes.Input} type="text" name="rua" placeholder="Rua" />
-                <input className={classes.Input} type="text" name="codigoPostal" placeholder="Código Postal" />
+                <Entrada inputtype="input" type="text" name="nome" placeholder="Seu Nome" />
+                <Entrada inputtype="input" type="email" name="email" placeholder="Seu Email" />
+                <Entrada inputtype="input" type="text" name="rua" placeholder="Rua" />
+                <Entrada inputtype="input" type="text" name="codigoPostal" placeholder="Código Postal" />
                 <Botao btnType="Sucedido" clicado={this.gerenPedido} >Ordene</Botao>
             </form>
         )
