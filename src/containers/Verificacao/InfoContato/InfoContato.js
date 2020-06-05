@@ -9,11 +9,57 @@ import Entrada from '../../../componentes/UI/Entrada/Entrada'
 
 class InfoContato extends Component {
     state = {
-        nome: '',
-        email: '',
-        endereco: {
-           rua: '',
-           codigoPostal: ''
+        pedidoForm: {
+            nome: {
+                tipoElemento: 'input',
+                configElemento: {
+                    type: 'text',
+                    placeholder: 'Seu nome'
+                },
+                valor: ''
+            },
+            rua: {
+                tipoElemento: 'input',
+                configElemento: {
+                    type: 'text',
+                    placeholder: 'Rua'
+                },
+                valor: ''
+            },
+            zipCode: {
+                tipoElemento: 'input',
+                configElemento: {
+                    type: 'text',
+                    placeholder: 'Código Postal'
+                },
+                valor: ''
+            },
+            pais: {
+                tipoElemento: 'input',
+                configElemento: {
+                    type: 'text',
+                    placeholder: 'País'
+                },
+                valor: ''
+            },
+            email: {
+                tipoElemento: 'input',
+                configElemento: {
+                    type: 'email',
+                    placeholder: 'Seu E-mail'
+                },
+                valor: ''
+            },
+            metodoEntrega: {
+                tipoElemento: 'select',
+                configElemento: {
+                    options: [
+                        {valor: 'o mais rápido', valorMostrado: 'O mais rápido'},
+                        {valor: 'o mais barato', valorMostrado: 'O mais barato'},
+                    ]
+                },
+                valor: ''
+            }
         },
         carregando: false
     }
@@ -25,17 +71,8 @@ class InfoContato extends Component {
         this.setState({carregando: true})
         const pedido = {
             ingredientes: this.props.ingredientes,
-            preco: this.props.preco,
-            cliente: {
-                nome: 'Mario Rossi',
-                endereco: {
-                      rua: 'Testrua 1',
-                      zipCode: '41351',
-                      pais: 'Itália'
-                },
-                email: 'test@test.com'
-            },
-            metodoEntrega: 'o mais rápido'
+            preco: this.props.preco
+            
         }
         axios.post('/pedidos.json', pedido)
             .then(resposta => {
@@ -50,7 +87,7 @@ class InfoContato extends Component {
     render() {
         let form = (
             <form>
-                <Entrada inputtype="input" type="text" name="nome" placeholder="Seu Nome" />
+                <Entrada tipoElemento="..." configElemento="..." valor="..." />
                 <Entrada inputtype="input" type="email" name="email" placeholder="Seu Email" />
                 <Entrada inputtype="input" type="text" name="rua" placeholder="Rua" />
                 <Entrada inputtype="input" type="text" name="codigoPostal" placeholder="Código Postal" />
