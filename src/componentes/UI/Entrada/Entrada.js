@@ -17,7 +17,7 @@ const entrada = (props) => {
            elementoEntrada = (
                   <select className={classes.elementoEntrada} value={props.valor}>
                        {props.configElemento.options.map(cada => (
-                           <option value={cada.valor}>
+                           <option key={cada.valor} value={cada.valor}>
                                {cada.valorMostrado}
                            </option>
                        ))}
