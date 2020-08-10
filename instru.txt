@@ -7,3 +7,14 @@ npm run eject
 npm i --save prop-types
 
 
+ver http://localhost:3000/verificacao/info-contato
+
+
+
+
+
+
+
+
+
+

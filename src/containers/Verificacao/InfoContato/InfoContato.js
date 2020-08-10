@@ -85,12 +85,23 @@ class InfoContato extends Component {
     }
 
     render() {
+        const matrizElementosForm = []
+
+        for (let chave in this.state.pedidoForm) {
+            matrizElementosForm.push({
+                id: chave,
+                config: this.state.pedidoForm[chave]
+            })    
+        }
+
         let form = (
             <form>
-                <Entrada tipoElemento="..." configElemento="..." valor="..." />
-                <Entrada inputtype="input" type="email" name="email" placeholder="Seu Email" />
-                <Entrada inputtype="input" type="text" name="rua" placeholder="Rua" />
-                <Entrada inputtype="input" type="text" name="codigoPostal" placeholder="Código Postal" />
+                
+                {matrizElementosForm.map(cada => (
+                    <Entrada tipoElemento={cada.config.tipoElemento} configElemento={cada.config.configElemento}
+                            valor={cada.config.valor} />
+                ))}
+                
                 <Botao btnType="Sucedido" clicado={this.gerenPedido} >Ordene</Botao>
             </form>
         )
