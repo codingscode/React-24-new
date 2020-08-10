@@ -98,7 +98,7 @@ class InfoContato extends Component {
             <form>
                 
                 {matrizElementosForm.map(cada => (
-                    <Entrada tipoElemento={cada.config.tipoElemento} configElemento={cada.config.configElemento}
+                    <Entrada key={cada.id} tipoElemento={cada.config.tipoElemento} configElemento={cada.config.configElemento}
                             valor={cada.config.valor} />
                 ))}
                 
