@@ -84,6 +84,10 @@ class InfoContato extends Component {
             })
     }
 
+    tratadorMudancaEntrada = (evento) => {
+        console.log(evento.target.value)
+    }
+
     render() {
         const matrizElementosForm = []
 
@@ -99,7 +103,7 @@ class InfoContato extends Component {
                 
                 {matrizElementosForm.map(cada => (
                     <Entrada key={cada.id} tipoElemento={cada.config.tipoElemento} configElemento={cada.config.configElemento}
-                            valor={cada.config.valor} />
+                            valor={cada.config.valor} mudanca={this.tratadorMudancaEntrada}/>
                 ))}
                 
                 <Botao btnType="Sucedido" clicado={this.gerenPedido} >Ordene</Botao>

@@ -8,14 +8,14 @@ const entrada = (props) => {
    
    switch (props.tipoElemento) {
        case ('input'):
-           elementoEntrada = <input className={classes.elementoEntrada} {...props.configElemento} value={props.valor}/>
+           elementoEntrada = <input className={classes.elementoEntrada} {...props.configElemento} value={props.valor} onChange={props.mudanca}/>
            break
        case ('textarea'):
-           elementoEntrada = <textarea className={classes.elementoEntrada} {...props.configElemento} value={props.valor}/>
+           elementoEntrada = <textarea className={classes.elementoEntrada} {...props.configElemento} value={props.valor} onChange={props.mudanca}/>
            break
        case ('select'):
            elementoEntrada = (
-                  <select className={classes.elementoEntrada} value={props.valor}>
+                  <select className={classes.elementoEntrada} value={props.valor} onChange={props.mudanca}>
                        {props.configElemento.options.map(cada => (
                            <option key={cada.valor} value={cada.valor}>
                                {cada.valorMostrado}
