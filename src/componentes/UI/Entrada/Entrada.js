@@ -25,7 +25,8 @@ const entrada = (props) => {
                 )
            break
        default:
-           elementoEntrada = <input className={classes.elementoEntrada} {...props.configElemento} value={props.valor}/>
+           elementoEntrada = <input className={classes.elementoEntrada} {...props.configElemento} value={props.valor}
+                   onChange={props.mudanca}/>
    }
    
    return (

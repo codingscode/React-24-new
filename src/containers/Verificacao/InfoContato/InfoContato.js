@@ -84,8 +84,18 @@ class InfoContato extends Component {
             })
     }
 
-    tratadorMudancaEntrada = (evento) => {
-        console.log(evento.target.value)
+    tratadorMudancaEntrada = (evento, identificadorEntrada) => {
+         console.log(evento.target.value)
+         console.log(identificadorEntrada)
+         const pedidoFormAtualizado = {
+            ...this.state.pedidoForm
+         }
+         const elementoFormAtualizado = {...pedidoFormAtualizado[identificadorEntrada]}
+         
+         elementoFormAtualizado.valor = evento.target.value
+         
+         pedidoFormAtualizado[identificadorEntrada] = elementoFormAtualizado
+         this.setState({pedidoForm: pedidoFormAtualizado})
     }
 
     render() {
@@ -103,7 +113,7 @@ class InfoContato extends Component {
                 
                 {matrizElementosForm.map(cada => (
                     <Entrada key={cada.id} tipoElemento={cada.config.tipoElemento} configElemento={cada.config.configElemento}
-                            valor={cada.config.valor} mudanca={this.tratadorMudancaEntrada}/>
+                            valor={cada.config.valor} mudanca={(evento) => this.tratadorMudancaEntrada(evento, cada.id)}/>
                 ))}
                 
                 <Botao btnType="Sucedido" clicado={this.gerenPedido} >Ordene</Botao>
