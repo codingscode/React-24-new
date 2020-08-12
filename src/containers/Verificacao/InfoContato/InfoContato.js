@@ -69,11 +69,18 @@ class InfoContato extends Component {
         //console.log(this.props.ingredientes)
         
         this.setState({carregando: true})
+        const dadosForm = {}
+
+        for (let identifElementoForm in this.state.pedidoForm) {
+            dadosForm[identifElementoForm] = this.state.pedidoForm[identifElementoForm].valor
+        }
+
         const pedido = {
             ingredientes: this.props.ingredientes,
-            preco: this.props.preco
-            
+            preco: this.props.preco,
+            dadosPedido: dadosForm
         }
+        
         axios.post('/pedidos.json', pedido)
             .then(resposta => {
                 this.setState({carregando: false})
@@ -109,8 +116,7 @@ class InfoContato extends Component {
         }
 
         let form = (
-            <form>
-                
+            <form onSubmit={this.gerenPedido}>
                 {matrizElementosForm.map(cada => (
                     <Entrada key={cada.id} tipoElemento={cada.config.tipoElemento} configElemento={cada.config.configElemento}
                             valor={cada.config.valor} mudanca={(evento) => this.tratadorMudancaEntrada(evento, cada.id)}/>
