@@ -102,7 +102,7 @@ class InfoContato extends Component {
     }
 
     checarValidade(valor, regras) {
-        let eValido = false
+        let eValido = true
     
         if (regras.requerido) {
            eValido = valor.trim() !== '' && eValido
