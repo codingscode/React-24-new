@@ -105,15 +105,15 @@ class InfoContato extends Component {
         let eValido = false
     
         if (regras.requerido) {
-           eValido = valor.trim() !== ''
+           eValido = valor.trim() !== '' && eValido
         }
 
         if (regras.minComprimento) {
-            eValido = valor.length >= regras.minComprimento
+            eValido = valor.length >= regras.minComprimento && eValido
         }
 
         if (regras.maxComprimento) {
-            eValido = valor.length <= regras.maxComprimento
+            eValido = valor.length <= regras.maxComprimento && eValido
         }
     
         return eValido
