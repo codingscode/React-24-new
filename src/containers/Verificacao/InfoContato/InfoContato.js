@@ -16,7 +16,9 @@ class InfoContato extends Component {
                     type: 'text',
                     placeholder: 'Seu nome'
                 },
-                valor: ''
+                valor: '',
+                validacao: {requerido: true},
+                valido: false
             },
             rua: {
                 tipoElemento: 'input',
@@ -24,7 +26,9 @@ class InfoContato extends Component {
                     type: 'text',
                     placeholder: 'Rua'
                 },
-                valor: ''
+                valor: '',
+                validacao: {requerido: true},
+                valido: false
             },
             zipCode: {
                 tipoElemento: 'input',
@@ -32,7 +36,9 @@ class InfoContato extends Component {
                     type: 'text',
                     placeholder: 'Código Postal'
                 },
-                valor: ''
+                valor: '',
+                validacao: {requerido: true},
+                valido: false
             },
             pais: {
                 tipoElemento: 'input',
@@ -40,7 +46,9 @@ class InfoContato extends Component {
                     type: 'text',
                     placeholder: 'País'
                 },
-                valor: ''
+                valor: '',
+                validacao: {requerido: true},
+                valido: false
             },
             email: {
                 tipoElemento: 'input',
@@ -48,7 +56,9 @@ class InfoContato extends Component {
                     type: 'email',
                     placeholder: 'Seu E-mail'
                 },
-                valor: ''
+                valor: '',
+                validacao: {requerido: true},
+                valido: false
             },
             metodoEntrega: {
                 tipoElemento: 'select',
@@ -91,6 +101,16 @@ class InfoContato extends Component {
             })
     }
 
+    checarValidade(valor, regras) {
+        let eValido = false
+    
+        if (regras.requerido) {
+           eValido = valor.trim() !== ''
+        }
+    
+        return eValido
+    }
+
     tratadorMudancaEntrada = (evento, identificadorEntrada) => {
          console.log(evento.target.value)
          console.log(identificadorEntrada)
@@ -100,8 +120,11 @@ class InfoContato extends Component {
          const elementoFormAtualizado = {...pedidoFormAtualizado[identificadorEntrada]}
          
          elementoFormAtualizado.valor = evento.target.value
+
+         elementoFormAtualizado.valido = this.checarValidade(elementoFormAtualizado.valor, elementoFormAtualizado.validacao)
          
          pedidoFormAtualizado[identificadorEntrada] = elementoFormAtualizado
+         console.log(elementoFormAtualizado)
          this.setState({pedidoForm: pedidoFormAtualizado})
     }
 

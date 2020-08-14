@@ -13,7 +13,7 @@ digitando mudanças e ver console de http://localhost:3000/verificacao/info-cont
 
 cadastrar dados e verificar firebase
 
-
+digitar e apagar o que foi digitado nos campos, ver o console
 
 
 
