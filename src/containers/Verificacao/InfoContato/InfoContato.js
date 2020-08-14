@@ -37,7 +37,7 @@ class InfoContato extends Component {
                     placeholder: 'Código Postal'
                 },
                 valor: '',
-                validacao: {requerido: true},
+                validacao: {requerido: true, minComprimento: 5, maxComprimento: 5},
                 valido: false
             },
             pais: {
@@ -106,6 +106,14 @@ class InfoContato extends Component {
     
         if (regras.requerido) {
            eValido = valor.trim() !== ''
+        }
+
+        if (regras.minComprimento) {
+            eValido = valor.length >= regras.minComprimento
+        }
+
+        if (regras.maxComprimento) {
+            eValido = valor.length <= regras.maxComprimento
         }
     
         return eValido
