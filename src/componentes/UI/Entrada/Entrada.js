@@ -5,17 +5,22 @@ import classes from './Entrada.css'
 
 const entrada = (props) => {
    let elementoEntrada = null
+   const classesEntrada = [classes.elementoEntrada]
+
+   if (props.invalido) {
+       classesEntrada.push(classes.Invalido)
+   }
    
    switch (props.tipoElemento) {
        case ('input'):
-           elementoEntrada = <input className={classes.elementoEntrada} {...props.configElemento} value={props.valor} onChange={props.mudanca}/>
+           elementoEntrada = <input className={classesEntrada.join(' ')} {...props.configElemento} value={props.valor} onChange={props.mudanca}/>
            break
        case ('textarea'):
-           elementoEntrada = <textarea className={classes.elementoEntrada} {...props.configElemento} value={props.valor} onChange={props.mudanca}/>
+           elementoEntrada = <textarea className={classesEntrada.join(' ')} {...props.configElemento} value={props.valor} onChange={props.mudanca}/>
            break
        case ('select'):
            elementoEntrada = (
-                  <select className={classes.elementoEntrada} value={props.valor} onChange={props.mudanca}>
+                  <select className={classesEntrada.join(' ')} value={props.valor} onChange={props.mudanca}>
                        {props.configElemento.options.map(cada => (
                            <option key={cada.valor} value={cada.valor}>
                                {cada.valorMostrado}
@@ -25,7 +30,7 @@ const entrada = (props) => {
                 )
            break
        default:
-           elementoEntrada = <input className={classes.elementoEntrada} {...props.configElemento} value={props.valor}
+           elementoEntrada = <input className={classesEntrada.join(' ')} {...props.configElemento} value={props.valor}
                    onChange={props.mudanca}/>
    }
    

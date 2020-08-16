@@ -150,7 +150,8 @@ class InfoContato extends Component {
             <form onSubmit={this.gerenPedido}>
                 {matrizElementosForm.map(cada => (
                     <Entrada key={cada.id} tipoElemento={cada.config.tipoElemento} configElemento={cada.config.configElemento}
-                            valor={cada.config.valor} mudanca={(evento) => this.tratadorMudancaEntrada(evento, cada.id)}/>
+                            valor={cada.config.valor} mudanca={(evento) => this.tratadorMudancaEntrada(evento, cada.id)}
+                            invalido={!cada.config.valido}   />
                 ))}
                 
                 <Botao btnType="Sucedido" clicado={this.gerenPedido} >Ordene</Botao>
