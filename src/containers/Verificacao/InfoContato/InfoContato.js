@@ -151,7 +151,7 @@ class InfoContato extends Component {
                 {matrizElementosForm.map(cada => (
                     <Entrada key={cada.id} tipoElemento={cada.config.tipoElemento} configElemento={cada.config.configElemento}
                             valor={cada.config.valor} mudanca={(evento) => this.tratadorMudancaEntrada(evento, cada.id)}
-                            invalido={!cada.config.valido}   />
+                            invalido={!cada.config.valido} deveValidar={cada.config.validacao}/>
                 ))}
                 
                 <Botao btnType="Sucedido" clicado={this.gerenPedido} >Ordene</Botao>
