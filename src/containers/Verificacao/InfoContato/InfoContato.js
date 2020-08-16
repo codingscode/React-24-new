@@ -76,6 +76,7 @@ class InfoContato extends Component {
                 valor: ''
             }
         },
+        formEValido: false,
         carregando: false
     }
 
@@ -140,7 +141,13 @@ class InfoContato extends Component {
 
          pedidoFormAtualizado[identificadorEntrada] = elementoFormAtualizado
          console.log(elementoFormAtualizado)
-         this.setState({pedidoForm: pedidoFormAtualizado})
+
+         let formEValido = true
+         for (let entrId in pedidoFormAtualizado) {
+            formEValido = pedidoFormAtualizado[entrId].valido && formEValido
+         }
+
+         this.setState({pedidoForm: pedidoFormAtualizado, formEValido: formEValido})
     }
 
     render() {
@@ -161,7 +168,7 @@ class InfoContato extends Component {
                             invalido={!cada.config.valido} deveValidar={cada.config.validacao} tocado={cada.config.tocado}/>
                 ))}
                 
-                <Botao btnType="Sucedido" clicado={this.gerenPedido} >Ordene</Botao>
+                <Botao btnType="Sucedido" clicado={this.gerenPedido} desabilitado={!this.state.formEValido}>Ordene</Botao>
             </form>
         )
         if (this.state.carregando) {
