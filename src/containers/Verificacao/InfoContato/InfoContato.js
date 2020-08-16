@@ -73,7 +73,8 @@ class InfoContato extends Component {
                         {valor: 'o mais barato', valorMostrado: 'O mais barato'},
                     ]
                 },
-                valor: ''
+                valor: '',
+                valido: true
             }
         },
         formEValido: false,
