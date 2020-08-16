@@ -147,6 +147,7 @@ class InfoContato extends Component {
             formEValido = pedidoFormAtualizado[entrId].valido && formEValido
          }
 
+         console.log('formEValido ?', formEValido)
          this.setState({pedidoForm: pedidoFormAtualizado, formEValido: formEValido})
     }
 

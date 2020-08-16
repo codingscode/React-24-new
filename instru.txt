@@ -15,7 +15,7 @@ cadastrar dados e verificar firebase
 
 digitar e apagar o que foi digitado nos campos, ver o console
 
-
+ficar digitando nos campos
 
 
 
