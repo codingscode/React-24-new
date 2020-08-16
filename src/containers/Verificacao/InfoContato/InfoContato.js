@@ -18,7 +18,8 @@ class InfoContato extends Component {
                 },
                 valor: '',
                 validacao: {requerido: true},
-                valido: false
+                valido: false,
+                tocado: false
             },
             rua: {
                 tipoElemento: 'input',
@@ -28,7 +29,8 @@ class InfoContato extends Component {
                 },
                 valor: '',
                 validacao: {requerido: true},
-                valido: false
+                valido: false,
+                tocado: false
             },
             zipCode: {
                 tipoElemento: 'input',
@@ -38,7 +40,8 @@ class InfoContato extends Component {
                 },
                 valor: '',
                 validacao: {requerido: true, minComprimento: 5, maxComprimento: 5},
-                valido: false
+                valido: false,
+                tocado: false
             },
             pais: {
                 tipoElemento: 'input',
@@ -48,7 +51,8 @@ class InfoContato extends Component {
                 },
                 valor: '',
                 validacao: {requerido: true},
-                valido: false
+                valido: false,
+                tocado: false
             },
             email: {
                 tipoElemento: 'input',
@@ -58,7 +62,8 @@ class InfoContato extends Component {
                 },
                 valor: '',
                 validacao: {requerido: true},
-                valido: false
+                valido: false,
+                tocado: false
             },
             metodoEntrega: {
                 tipoElemento: 'select',
@@ -131,6 +136,8 @@ class InfoContato extends Component {
 
          elementoFormAtualizado.valido = this.checarValidade(elementoFormAtualizado.valor, elementoFormAtualizado.validacao)
          
+         elementoFormAtualizado.tocado = true
+
          pedidoFormAtualizado[identificadorEntrada] = elementoFormAtualizado
          console.log(elementoFormAtualizado)
          this.setState({pedidoForm: pedidoFormAtualizado})
@@ -151,7 +158,7 @@ class InfoContato extends Component {
                 {matrizElementosForm.map(cada => (
                     <Entrada key={cada.id} tipoElemento={cada.config.tipoElemento} configElemento={cada.config.configElemento}
                             valor={cada.config.valor} mudanca={(evento) => this.tratadorMudancaEntrada(evento, cada.id)}
-                            invalido={!cada.config.valido} deveValidar={cada.config.validacao}/>
+                            invalido={!cada.config.valido} deveValidar={cada.config.validacao} tocado={cada.config.tocado}/>
                 ))}
                 
                 <Botao btnType="Sucedido" clicado={this.gerenPedido} >Ordene</Botao>

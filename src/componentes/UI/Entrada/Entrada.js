@@ -7,7 +7,7 @@ const entrada = (props) => {
    let elementoEntrada = null
    const classesEntrada = [classes.elementoEntrada]
 
-   if (props.invalido && props.deveValidar) {
+   if (props.invalido && props.deveValidar && props.tocado) {
        classesEntrada.push(classes.Invalido)
    }
    
