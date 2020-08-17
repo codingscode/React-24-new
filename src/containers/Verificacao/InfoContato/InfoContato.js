@@ -74,6 +74,7 @@ class InfoContato extends Component {
                     ]
                 },
                 valor: '',
+                validacao: {},
                 valido: true
             }
         },

@@ -19,5 +19,5 @@ ficar digitando nos campos
 
 quando todos os campos estão preenchidos fica true
 
-
+o campo entrega pode ser setado
 
