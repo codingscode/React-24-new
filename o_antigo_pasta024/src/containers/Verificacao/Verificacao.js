@@ -5,6 +5,8 @@ import VerifiSumario from '../../componentes/Pedido/VerifiSumario/VerifiSumario'
 import InfoContato from './InfoContato/InfoContato'
 
 class Checkout extends Component {
+      /*global state, gerengavetaLateralFechado, gerenGavetaToggle */
+      /*eslint no-undef: "error"*/
      state = {
         ingredientes: null,
         preco: 0
