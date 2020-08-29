@@ -5,6 +5,8 @@ import BarFerr from '../Navegacao/BarrFerr/BarFerr'
 import GavetaLateral from '../Navegacao/GavetaLateral/GavetaLateral'
 
 class Layout extends Component {
+    /*global state, gerengavetaLateralFechado, gerenGavetaToggle */
+    /*eslint no-undef: "error"*/
     state = {
         mostrarGavetaLateral: false
     }

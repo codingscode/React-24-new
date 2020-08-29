@@ -1,3 +1,4 @@
+/*eslint no-undef: "error"*/
 import React, {Component} from 'react'
 
 import Auxiliar from '../../hoc/Auxiliar'
@@ -18,7 +19,8 @@ const PRECOS_INGREDIENTE = {
 }
 
 class burgerConstrutor extends Component {
-    
+    /*global *, state, adicionadorIngrediente, removedorIngrediente, gerenAdquirir, gerencancelarAdquirir, gerencontinuarAdquirir*/
+    /*eslint no-undef: "error"*/
     state = {
       ingredientes: null,
       precoTotal: 4,
