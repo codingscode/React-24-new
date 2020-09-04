@@ -32,13 +32,13 @@ class burgerConstrutor extends Component {
     
     componentDidMount () {
       console.log(this.props)
-      axios.get('https://react-meu-burger.firebaseio.com/ingredientes.json')
+      /* axios.get('https://react-meu-burger.firebaseio.com/ingredientes.json')
          .then(resposta => {
             this.setState({ingredientes: resposta.data})
          })
          .catch(erro => {
              this.setState({erro: true})
-         })
+         }) */
     }
 
     atualizarEstadoAdquirir (ingredientes) {
