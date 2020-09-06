@@ -1,5 +1,6 @@
 /*eslint no-undef: "error"*/
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 
 import Auxiliar from '../../hoc/Auxiliar'
 import Burger from '../../componentes/Burger/Burger'
@@ -9,6 +10,7 @@ import SumarioPedido from '../../componentes/Burger/SumarioPedido/SumarioPedido'
 import Rodador from '../../componentes/UI/Rodador/Rodador'
 import GerenComErro from '../../hoc/GerenComErro/GerenComErro'
 import axios from '../../axios-pedidos'
+import * as acaoTipos from '../../store/acoes'
 
 
 const PRECOS_INGREDIENTE = {
@@ -22,7 +24,6 @@ class burgerConstrutor extends Component {
     /*global *, state, adicionadorIngrediente, removedorIngrediente, gerenAdquirir, gerencancelarAdquirir, gerencontinuarAdquirir*/
     /*eslint no-undef: "error"*/
     state = {
-      ingredientes: null,
       precoTotal: 4,
       adquirivel: false,
       adquirindo: false,
@@ -108,7 +109,7 @@ class burgerConstrutor extends Component {
 
     render() {
         const infoDesabilitada = {
-           ...this.state.ingredientes
+           ...this.props.meus_ings
         };
         for (let key in infoDesabilitada) {
             infoDesabilitada[key] = infoDesabilitada[key] <= 0
@@ -118,19 +119,19 @@ class burgerConstrutor extends Component {
         
         let burger = this.state.erro ? <p>Ingredientes não podem ser carregados</p> : <Rodador />
 
-        if (this.state.ingredientes) {
+        if (this.props.meus_ings) {
             burger = (
               <Auxiliar>
-                  <Burger ingredientes={this.state.ingredientes}/>
-                  <ControlesConstrucao ingredienteAdicionado={this.adicionadorIngrediente}
-                      ingredienteRemovido={this.removedorIngrediente}
+                  <Burger ingredientes={this.props.meus_ings}/>
+                  <ControlesConstrucao ingredienteAdicionado={this.props.emIngredienteAdicionado}
+                      ingredienteRemovido={this.props.emIngredienteRemovido}
                       desabilitado={infoDesabilitada}
                       adquirivel={this.state.adquirivel}
                       preco={this.state.precoTotal}
                       ordenado={this.gerenAdquirir}/>
               </Auxiliar>
            );
-           sumarioPedido = <SumarioPedido ingredientes={this.state.ingredientes} 
+           sumarioPedido = <SumarioPedido ingredientes={this.props.meus_ings} 
                                 compraCancelada={this.gerencancelarAdquirir}
                                 compraContinuada={this.gerencontinuarAdquirir}
                                 preco={this.state.precoTotal}/>
@@ -150,4 +151,18 @@ class burgerConstrutor extends Component {
     }
 }
 
-export default GerenComErro(burgerConstrutor, axios);
+const mapStateParaProps = state => {
+    return {
+      meus_ings: state.ingredientes
+    }
+}
+
+const mapDispatchParaProps = dispatch_func => {
+    return {
+      emIngredienteAdicionado: (nomeIng) => dispatch_func({type: acaoTipos.ADIC_INGREDIENTE, nomeIngrediente: nomeIng}),
+      emIngredienteRemovido: (nomeIng) => dispatch_func({type: acaoTipos.REMOV_INGREDIENTE, nomeIngrediente: nomeIng})
+    }
+}
+
+
+export default connect(mapStateParaProps, mapDispatchParaProps)(GerenComErro(burgerConstrutor, axios))

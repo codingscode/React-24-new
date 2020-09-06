@@ -9,7 +9,7 @@ const stateInicial = {
 }
  
 const reducer = (state = stateInicial, acao) => {
-    switch (acao.acaoTipos) {
+    switch (acao.type) {
         case acaoTipos.ADIC_INGREDIENTE:
            return { ...state, ingredientes: {...state.ingredientes, 
                                              [acao.nomeIngrediente]: state.ingredientes[acao.nomeIngrediente] + 1} }

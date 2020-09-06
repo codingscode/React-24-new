@@ -23,6 +23,6 @@ const controlesConstrucao = (props) => (
     </div>
 );
 
-export default controlesConstrucao;
+export default controlesConstrucao
 
 
