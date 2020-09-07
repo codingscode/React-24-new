@@ -23,3 +23,6 @@ o campo entrega pode ser setado
 
 o preco pode ser setado agora
 
+ver firebase, pedido setado
+
+

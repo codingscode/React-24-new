@@ -5,7 +5,8 @@ const stateInicial = {
     ingredientes: {
         salada: 0, bacon: 0, queijo: 0, carne: 0
     },
-    precoTotal: 4
+    precoTotal: 4,
+    adiquirivel: false
 }
 
 const PRECOS_INGREDIENTE = {

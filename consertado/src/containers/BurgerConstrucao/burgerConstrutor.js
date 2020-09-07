@@ -56,17 +56,14 @@ class burgerConstrutor extends Component {
 
     gerencontinuarAdquirir = () => {
         
-        const parametrosConsulta = []
+        /* const parametrosConsulta = []
         for (let i in this.state.ingredientes) {
              parametrosConsulta.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredientes[i]))
         }
         parametrosConsulta.push('preco=' + this.state.precoTotal)
-        const stringConsulta = parametrosConsulta.join('&')
+        const stringConsulta = parametrosConsulta.join('&') */
  
-        this.props.history.push({
-            pathname: '/verificacao',
-            search: '?' + stringConsulta
-        })
+        this.props.history.push('/verificacao')
     }
 
     render() {

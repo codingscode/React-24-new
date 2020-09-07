@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { connect } from 'react-redux'
 
 import Botao from '../../../componentes/UI/Botao/Botao'
 import Rodador from '../../../componentes/UI/Rodador/Rodador'
@@ -94,7 +95,7 @@ class InfoContato extends Component {
         }
 
         const pedido = {
-            ingredientes: this.props.ingredientes,
+            ingredientes: this.props.meus_ings,
             preco: this.props.preco,
             dadosPedido: dadosForm
         }
@@ -190,7 +191,11 @@ class InfoContato extends Component {
     }
 }
 
-export default InfoContato
+const mapStateParaProps = state => {
+    return {
+        meus_ings: state.ingredientes,
+        preco: state.precoTotal
+    }
+}
 
-
-
+export default connect(mapStateParaProps)(InfoContato)
