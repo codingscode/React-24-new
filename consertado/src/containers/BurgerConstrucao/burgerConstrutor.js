@@ -13,18 +13,12 @@ import axios from '../../axios-pedidos'
 import * as acaoTipos from '../../store/acoes'
 
 
-const PRECOS_INGREDIENTE = {
-  salada: 0.5,
-  queijo: 0.4,
-  carne: 1.3,
-  bacon: 0.7
-}
+
 
 class burgerConstrutor extends Component {
     /*global *, state, adicionadorIngrediente, removedorIngrediente, gerenAdquirir, gerencancelarAdquirir, gerencontinuarAdquirir*/
     /*eslint no-undef: "error"*/
     state = {
-      precoTotal: 4,
       adquirivel: false,
       adquirindo: false,
       carregando: false,
@@ -53,7 +47,7 @@ class burgerConstrutor extends Component {
         this.setState({adquirivel: soma > 0})
     }
 
-    adicionadorIngrediente = (type) => {
+    /* adicionadorIngrediente = (type) => {
       const previoContad = this.state.ingredientes[type];
       const atualizadoContad = previoContad + 1;
       const ingredientesAtualizados = {
@@ -82,7 +76,7 @@ class burgerConstrutor extends Component {
       const novoPreco = previoPreco - deducaoPreco;
       this.setState({precoTotal: novoPreco, ingredientes: ingredientesAtualizados});
       this.atualizarEstadoAdquirir(ingredientesAtualizados)
-   }
+   } */
 
     gerenAdquirir = () => {
         this.setState({adquirindo: true});
@@ -110,7 +104,7 @@ class burgerConstrutor extends Component {
     render() {
         const infoDesabilitada = {
            ...this.props.meus_ings
-        };
+        }
         for (let key in infoDesabilitada) {
             infoDesabilitada[key] = infoDesabilitada[key] <= 0
         }
@@ -127,14 +121,14 @@ class burgerConstrutor extends Component {
                       ingredienteRemovido={this.props.emIngredienteRemovido}
                       desabilitado={infoDesabilitada}
                       adquirivel={this.state.adquirivel}
-                      preco={this.state.precoTotal}
+                      preco={this.props.preco}
                       ordenado={this.gerenAdquirir}/>
               </Auxiliar>
            );
            sumarioPedido = <SumarioPedido ingredientes={this.props.meus_ings} 
                                 compraCancelada={this.gerencancelarAdquirir}
                                 compraContinuada={this.gerencontinuarAdquirir}
-                                preco={this.state.precoTotal}/>
+                                preco={this.props.preco}/>
         }
         if(this.state.carregando) {
             sumarioPedido = <Rodador />
@@ -153,7 +147,8 @@ class burgerConstrutor extends Component {
 
 const mapStateParaProps = state => {
     return {
-      meus_ings: state.ingredientes
+        meus_ings: state.ingredientes,
+        preco: state.precoTotal
     }
 }
 

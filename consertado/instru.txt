@@ -1,0 +1,25 @@
+//1
+npm i create-react-app -g
+create-react-app pasta024 --script-version 1.1.5
+npm run eject
+
+//4
+npm i --save prop-types
+
+
+ver http://localhost:3000/verificacao/info-contato
+
+digitando mudanças e ver console de http://localhost:3000/verificacao/info-contato
+
+cadastrar dados e verificar firebase
+
+digitar e apagar o que foi digitado nos campos, ver o console
+
+ficar digitando nos campos
+
+quando todos os campos estão preenchidos fica true
+
+o campo entrega pode ser setado
+
+o preco pode ser setado agora
+
