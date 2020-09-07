@@ -8,7 +8,7 @@ const controles = [
     {label: 'Bacon', type: 'bacon'},
     {label: 'Queijo', type: 'queijo'},
     {label: 'Carne', type: 'carne'}
-];
+]
 
 const controlesConstrucao = (props) => (
     <div className={'controlesConstrucao'}>
@@ -21,7 +21,7 @@ const controlesConstrucao = (props) => (
          ))}
          <button className={'botaoPedido'} disabled={!props.adquirivel} onClick={props.ordenado}>Solicite agora</button>
     </div>
-);
+)
 
 export default controlesConstrucao
 

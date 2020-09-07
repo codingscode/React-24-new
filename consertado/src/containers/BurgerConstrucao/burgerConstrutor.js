@@ -19,7 +19,6 @@ class burgerConstrutor extends Component {
     /*global *, state, adicionadorIngrediente, removedorIngrediente, gerenAdquirir, gerencancelarAdquirir, gerencontinuarAdquirir*/
     /*eslint no-undef: "error"*/
     state = {
-      adquirivel: false,
       adquirindo: false,
       carregando: false,
       erro: false
@@ -42,41 +41,10 @@ class burgerConstrutor extends Component {
               return ingredientes[igKey]
           })
           .reduce((soma, el) => {
-              return soma + el;
-          }, 0);
-        this.setState({adquirivel: soma > 0})
+              return soma + el
+          }, 0)
+        return soma > 0
     }
-
-    /* adicionadorIngrediente = (type) => {
-      const previoContad = this.state.ingredientes[type];
-      const atualizadoContad = previoContad + 1;
-      const ingredientesAtualizados = {
-         ...this.state.ingredientes
-      };
-      ingredientesAtualizados[type] = atualizadoContad
-      const adicaoPreco = PRECOS_INGREDIENTE[type]
-      const previoPreco = this.state.precoTotal;
-      const novoPreco = previoPreco + adicaoPreco;
-      this.setState({precoTotal: novoPreco, ingredientes: ingredientesAtualizados});
-      this.atualizarEstadoAdquirir(ingredientesAtualizados)
-   }
-   
-   removedorIngrediente = (type) => {
-      const previoContad = this.state.ingredientes[type];
-      if (previoContad <= 0) {
-        return;
-      }
-      const atualizadoContad = previoContad - 1;
-      const ingredientesAtualizados = {
-        ...this.state.ingredientes
-      };
-      ingredientesAtualizados[type] = atualizadoContad
-      const deducaoPreco = PRECOS_INGREDIENTE[type]
-      const previoPreco = this.state.precoTotal;
-      const novoPreco = previoPreco - deducaoPreco;
-      this.setState({precoTotal: novoPreco, ingredientes: ingredientesAtualizados});
-      this.atualizarEstadoAdquirir(ingredientesAtualizados)
-   } */
 
     gerenAdquirir = () => {
         this.setState({adquirindo: true});
@@ -120,7 +88,7 @@ class burgerConstrutor extends Component {
                   <ControlesConstrucao ingredienteAdicionado={this.props.emIngredienteAdicionado}
                       ingredienteRemovido={this.props.emIngredienteRemovido}
                       desabilitado={infoDesabilitada}
-                      adquirivel={this.state.adquirivel}
+                      adquirivel={this.atualizarEstadoAdquirir(this.props.meus_ings)}
                       preco={this.props.preco}
                       ordenado={this.gerenAdquirir}/>
               </Auxiliar>
