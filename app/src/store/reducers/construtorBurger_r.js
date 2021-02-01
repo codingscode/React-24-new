@@ -1,4 +1,4 @@
-import * as acaoTipos from './acoes'
+import * as acaoTipos from '../actions/acoesTypes'
 
 
 const stateInicial = {

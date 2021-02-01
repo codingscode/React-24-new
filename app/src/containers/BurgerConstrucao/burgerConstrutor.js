@@ -10,7 +10,7 @@ import SumarioPedido from '../../componentes/Burger/SumarioPedido/SumarioPedido'
 import Rodador from '../../componentes/UI/Rodador/Rodador'
 import GerenComErro from '../../hoc/GerenComErro/GerenComErro'
 import axios from '../../axios-pedidos'
-import * as acaoTipos from '../../store/acoes'
+import * as construtorBurgerActions from '../../store/actions/index'
 
 
 
@@ -119,8 +119,8 @@ const mapStateParaProps = state => {
 
 const mapDispatchParaProps = dispatch_func => {
     return {
-      emIngredienteAdicionado: (nomeIng) => dispatch_func({type: acaoTipos.ADIC_INGREDIENTE, nomeIngrediente: nomeIng}),
-      emIngredienteRemovido: (nomeIng) => dispatch_func({type: acaoTipos.REMOV_INGREDIENTE, nomeIngrediente: nomeIng})
+      emIngredienteAdicionado: (nomeIng) => dispatch_func(construtorBurgerActions.adicIngrediente(nomeIng) ),
+      emIngredienteRemovido: (nomeIng) => dispatch_func(construtorBurgerActions.removIngrediente(nomeIng))
     }
 }
 
