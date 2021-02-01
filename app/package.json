@@ -21,7 +21,7 @@
     "eslint-plugin-react": "7.20.6",
     "file-loader": "6.0.0",
     "fs-extra": "9.0.1",
-    "html-webpack-plugin": "^4.3.0",
+    "html-webpack-plugin": "4.3.0",
     "object-assign": "4.1.1",
     "postcss-flexbugs-fixes": "4.2.1",
     "postcss-loader": "3.0.0",
@@ -62,11 +62,11 @@
     ]
   },
   "devDependencies": {
-    "concurrently": "^5.2.0",
-    "eslint": "^6.6.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "eslint-plugin-import": "^2.22.0",
-    "eslint-plugin-jsx-a11y": "^6.3.1",
-    "eslint-plugin-react-hooks": "^4.0.8"
+    "concurrently": "5.2.0",
+    "eslint": "6.6.0",
+    "eslint-config-airbnb": "18.2.0",
+    "eslint-plugin-import": "2.22.0",
+    "eslint-plugin-jsx-a11y": "6.3.1",
+    "eslint-plugin-react-hooks": "4.0.8"
   }
 }
