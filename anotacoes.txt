@@ -3,7 +3,8 @@ https://github.com/zalmoxisus/redux-devtools-extension
         window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
 
-
+no terminal da pasta:
+      npm i --save redux-thunk
 
 
 
