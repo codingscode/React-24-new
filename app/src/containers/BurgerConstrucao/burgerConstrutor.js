@@ -19,20 +19,12 @@ class burgerConstrutor extends Component {
     /*global *, state, adicionadorIngrediente, removedorIngrediente, gerenAdquirir, gerencancelarAdquirir, gerencontinuarAdquirir*/
     /*eslint no-undef: "error"*/
     state = {
-      adquirindo: false,
-      carregando: false,
-      erro: false
+      adquirindo: false
     }
     
     componentDidMount () {
       console.log(this.props)
-      axios.get('https://react-meu-burger.firebaseio.com/ingredientes.json')
-         .then(resposta => {
-            this.setState({ingredientes: resposta.data})
-         })
-         .catch(erro => {
-             this.setState({erro: true})
-         })
+      
     }
 
     atualizarEstadoAdquirir (ingredientes) {
@@ -95,9 +87,7 @@ class burgerConstrutor extends Component {
                                 compraContinuada={this.gerencontinuarAdquirir}
                                 preco={this.props.preco}/>
         }
-        if(this.state.carregando) {
-            sumarioPedido = <Rodador />
-        }
+        
 
         return (
           <Auxiliar>

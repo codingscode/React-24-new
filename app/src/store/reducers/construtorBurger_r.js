@@ -2,11 +2,10 @@ import * as acaoTipos from '../actions/acoesTypes'
 
 
 const stateInicial = {
-    ingredientes: {
-        salada: 0, bacon: 0, queijo: 0, carne: 0
-    },
+    ingredientes: null,
     precoTotal: 4,
-    adiquirivel: false
+    adiquirivel: false,
+    erro: false
 }
 
 const PRECOS_INGREDIENTE = {
